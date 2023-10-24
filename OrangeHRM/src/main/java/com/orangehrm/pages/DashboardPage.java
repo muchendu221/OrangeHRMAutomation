@@ -18,6 +18,7 @@ public class DashboardPage {
     public DashboardPage(@NotNull WebDriver driver, Wait<WebDriver> wait){
         this.driver = driver;
         this.wait = wait;
+        initElements();
     }
 
     public void initElements(){
