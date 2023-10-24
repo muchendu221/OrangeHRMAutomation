@@ -1,0 +1,17 @@
+<?xml version = "1.0"encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "Login Tests">
+    <test name = "Login Tests" preserve-order="true" parallel="false" group-by-instances="true">
+        <classes>
+            <class name="com.orangehrm.tests.LoginPageTests">
+                <methods>
+                    <include name="testLoginPageVisibility"/>
+                    <include name="testLoginInvalidUsername"/>
+                    <include name="testLoginInvalidPassword"/>
+                    <include name="testLoginInvalidCredentials"/>
+                    <include name="testLoginValidCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
