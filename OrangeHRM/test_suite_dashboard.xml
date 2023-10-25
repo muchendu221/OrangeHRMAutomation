@@ -1,0 +1,15 @@
+<?xml version = "1.0"encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "Dashboard Page Tests">
+    <test name = "Dashboard Page Tests" preserve-order="true" parallel="false" group-by-instances="true">
+        <classes>
+            <class name="com.orangehrm.tests.DashboardPageTests">
+                <methods>
+                    <include name="testDashboardPageVisibility"/>
+                    <include name="testGoToMyInfo"/>
+                    <include name="testLogout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

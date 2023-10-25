@@ -30,6 +30,7 @@ public class LoginPageTests {
         options = new ChromeOptions();
         //options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new FluentWait<>(driver)
@@ -39,13 +40,13 @@ public class LoginPageTests {
         Reporter.log("Test setup done");
     }
 
-    @Test(testName = "Login page is visible")
+    @Test(testName = "Login page is visible", priority = 0)
     public void testLoginPageVisibility(){
         Assert.assertTrue(loginPage.isVisible());
         //Assert.assertTrue(loginPage.hasLoginError());
     }
 
-    @Test(testName = "Login using invalid username")
+    @Test(testName = "Login using invalid username", priority = 1)
     public void testLoginInvalidUsername(){
         String username = "test";
         String password = "admin123";
@@ -55,7 +56,7 @@ public class LoginPageTests {
         Assert.assertTrue(loginPage.hasLoginError());
     }
 
-    @Test(testName = "Login using invalid password")
+    @Test(testName = "Login using invalid password", priority = 2)
     public void testLoginInvalidPassword(){
         String username = "Admin";
         String password = "123admin";
@@ -65,7 +66,7 @@ public class LoginPageTests {
         Assert.assertTrue(loginPage.hasLoginError());
     }
 
-    @Test(testName = "Login using invalid username and password")
+    @Test(testName = "Login using invalid username and password", priority = 3)
     public void testLoginInvalidCredentials(){
         String username = "nimdA";
         String password = "123admin";
@@ -75,7 +76,7 @@ public class LoginPageTests {
         Assert.assertTrue(loginPage.hasLoginError());
     }
 
-    @Test(testName = "Login using valid username and password")
+    @Test(testName = "Login using valid username and password", priority = 4)
     public void testLoginValidCredentials(){
         String username = "Admin";
         String password = "admin123";

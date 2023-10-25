@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -30,6 +31,7 @@ public class DashboardPageTests {
         options = new ChromeOptions();
         //options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new FluentWait<>(driver)
@@ -43,20 +45,26 @@ public class DashboardPageTests {
         dashboardPage.initElements();
     }
 
-    @Test(testName = "Dashboard page is visible")
+    @Test(testName = "Dashboard page is visible", priority = 0)
     public void testDashboardPageVisibility(){
         Assert.assertTrue(dashboardPage.isVisible());
     }
 
-    @Test(testName = "Go to My Info Page")
+    @Test(testName = "Go to My Info Page", priority = 1)
     public void testGoToMyInfo(){
         myInfoPage = dashboardPage.goToMyInfo();
         Assert.assertTrue(myInfoPage.isVisible());
     }
 
-    @Test(testName = "Logout")
+    @Test(testName = "Logout", priority = 2)
     public void testLogout(){
         loginPage = dashboardPage.logout();
         Assert.assertTrue(loginPage.isVisible());
+    }
+
+    @AfterTest
+    public void tearDown(){
+        driver.close();
+        driver.quit();
     }
 }

@@ -18,13 +18,12 @@ public class DashboardPage {
     public DashboardPage(@NotNull WebDriver driver, Wait<WebDriver> wait){
         this.driver = driver;
         this.wait = wait;
-        initElements();
+        //initElements();
     }
 
     public void initElements(){
         text_title = wait.until(driver -> this.driver.findElement(By.xpath("//h6[text()='Dashboard']")));
         link_my_info = wait.until(driver -> this.driver.findElement(By.xpath("//span[text()='My Info']/parent::a")));
-        link_header_options = wait.until(driver -> this.driver.findElement(By.xpath("//header/div/div[2]/ul/li[1]/span[1]")));
     }
 
     public boolean isVisible(){
@@ -39,7 +38,7 @@ public class DashboardPage {
     }
 
     public LoginPage logout(){
-        initElements();
+        link_header_options = wait.until(driver -> this.driver.findElement(By.xpath("//header/div/div[2]/ul/li[1]/span[1]")));
         link_header_options.click();
         link_logout = wait.until(driver -> this.driver.findElement(By.xpath("//a[text()='Logout']/..")));
         link_logout.click();

@@ -26,13 +26,13 @@ public class LoginPage {
     }
 
     public void initElements(){
-
         textbox_username = driver.findElement(By.xpath("//input[@name='username']"));
         textbox_password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
         button_login = driver.findElement(By.xpath("//button[text()[contains(.,'Login')]]"));
     }
 
     public boolean isVisible(){
+        initElements();
         return button_login.isDisplayed();
     }
 
