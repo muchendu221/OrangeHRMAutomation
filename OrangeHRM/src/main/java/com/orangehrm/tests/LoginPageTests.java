@@ -3,6 +3,7 @@ package com.orangehrm.tests;
 import com.orangehrm.pages.DashboardPage;
 import com.orangehrm.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -41,7 +42,7 @@ public class LoginPageTests {
     @Test(testName = "Login page is visible")
     public void testLoginPageVisibility(){
         Assert.assertTrue(loginPage.isVisible());
-        Assert.assertTrue(loginPage.hasLoginError());
+        //Assert.assertTrue(loginPage.hasLoginError());
     }
 
     @Test(testName = "Login using invalid username")

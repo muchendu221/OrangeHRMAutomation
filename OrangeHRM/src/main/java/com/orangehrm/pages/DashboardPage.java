@@ -41,8 +41,8 @@ public class DashboardPage {
     public LoginPage logout(){
         initElements();
         link_header_options.click();
-        link_header_options = wait.until(driver -> this.driver.findElement(By.xpath("//a[text()='Logout']/..")));
-        link_header_options.click();
+        link_logout = wait.until(driver -> this.driver.findElement(By.xpath("//a[text()='Logout']/..")));
+        link_logout.click();
         return new LoginPage(driver, wait);
     }
 }

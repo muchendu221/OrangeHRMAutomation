@@ -15,6 +15,7 @@ public class LoginPage {
     WebElement textbox_username;
     WebElement textbox_password;
     WebElement button_login;
+    WebElement text_login_error;
 
     public LoginPage(@NotNull WebDriver driver, Wait<WebDriver> wait){
         this.driver = driver;
@@ -26,7 +27,7 @@ public class LoginPage {
 
     public void initElements(){
 
-        textbox_username = driver.findElement(By.xpath("//input[@placeholder='Username']"));
+        textbox_username = driver.findElement(By.xpath("//input[@name='username']"));
         textbox_password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
         button_login = driver.findElement(By.xpath("//button[text()[contains(.,'Login')]]"));
     }
@@ -47,10 +48,9 @@ public class LoginPage {
 
     public boolean hasLoginError(){
         try {
-            WebElement text_login_error = wait.until(driver -> this.driver.findElement(By.xpath("//p[text()[contains(.,'Invalid credentials')]]")));
+            text_login_error = wait.until(driver -> this.driver.findElement(By.xpath("//p[text()[contains(.,'Invalid credentials')]]")));
             return text_login_error.isDisplayed();
         }catch (NoSuchElementException nse){
-            // invalid login error not shown
             return false;
         }
     }
