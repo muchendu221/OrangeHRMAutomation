@@ -36,7 +36,7 @@ public class MyInfoPageTests {
         options = new ChromeOptions();
         //options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
-       // options.addArguments("--headless");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new FluentWait<>(driver)
@@ -93,8 +93,8 @@ public class MyInfoPageTests {
 
     @AfterTest
     public void tearDown(){
-        //driver.close();
-       // driver.quit();
+        driver.close();
+        driver.quit();
     }
 
 }
