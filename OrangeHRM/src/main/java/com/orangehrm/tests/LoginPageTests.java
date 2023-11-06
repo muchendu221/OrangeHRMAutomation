@@ -30,11 +30,12 @@ public class LoginPageTests {
         options = new ChromeOptions();
         //options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
+                .withTimeout(Duration.ofSeconds(45))
+                .ignoring(NoSuchElementException.class)
                 .pollingEvery(Duration.ofMillis(1));
         loginPage = new LoginPage(driver, wait);
         Reporter.log("Test setup done");

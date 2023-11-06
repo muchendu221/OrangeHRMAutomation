@@ -20,13 +20,13 @@ public class LoginPage {
     public LoginPage(@NotNull WebDriver driver, Wait<WebDriver> wait){
         this.driver = driver;
         this.wait = wait;
-        WebDriver.Timeouts timeouts=  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        //WebDriver.Timeouts timeouts=  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         initElements();
     }
 
     public void initElements(){
-        textbox_username = driver.findElement(By.xpath("//input[@name='username']"));
+        textbox_username = wait.until(driver -> this.driver.findElement(By.xpath("//input[@name='username']")));
         textbox_password = driver.findElement(By.xpath("//input[@placeholder='Password']"));
         button_login = driver.findElement(By.xpath("//button[text()[contains(.,'Login')]]"));
     }
